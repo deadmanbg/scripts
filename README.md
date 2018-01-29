@@ -1,1 +1,1 @@
-# scripts
+# scrpits
