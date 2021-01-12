@@ -16,7 +16,9 @@ while True:
             end_time = datetime.now()
             end_time_str = end_time.strftime("%Y %m %d %H:%M:%S")
             with open('offline.txt', 'a') as f:
-                f.write(f'{start_time_str} - {end_time_str}: total {end_time - start_time}\n')
+                total = end_time - start_time
+                if (total.total_seconds() > 2)
+                    f.write(f'{start_time_str} - {end_time_str}: total {total}\n')
         s.close()
         on = True
     except Exception:
