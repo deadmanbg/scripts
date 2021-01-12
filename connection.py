@@ -13,8 +13,8 @@ while True:
         s.connect(('8.8.8.8', 53))
         if on == False:
             end_time = datetime.now()
-            end_time_str = end_time.strftime("%Y %m %d %H:%M:%S")
-            print('Online ' + end_time_str)
+            end_time_str = end_time.strftime("%d.%m.%Y %H:%M:%S")
+            print('Online  ' + end_time_str)
             with open('offline.txt', 'a') as f:
                 total = end_time - start_time
                 if total.total_seconds() > 2:
