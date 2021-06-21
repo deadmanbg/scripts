@@ -5,6 +5,7 @@ import socket
 
 on = True
 start_time = start_time_str = None
+logfile = 'offline.txt'
 while True:
     try:
         time.sleep(1)
@@ -15,9 +16,13 @@ while True:
             end_time = datetime.now()
             end_time_str = end_time.strftime("%d.%m.%Y %H:%M:%S")
             print('Online  ' + end_time_str)
-            with open('offline.txt', 'a') as f:
+            if os.path.exists(logfile):
+                append_write = 'a'
+            else:
+                append_write = 'w'
+            with open(logfile, append_write) as f:
                 total = end_time - start_time
-                if total.total_seconds() > 2:
+                if total.total_seconds() > 3:
                     f.write(start_time_str + ' - ' + end_time_str + ': total ' + str(total) + '\n')
         s.close()
         on = True
