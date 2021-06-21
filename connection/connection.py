@@ -1,6 +1,7 @@
 from datetime import datetime
 import time
 import socket
+import os
 
 on = True
 start_time = start_time_str = None
@@ -22,10 +23,12 @@ while True:
             with open(logfile, append_write) as f:
                 total = end_time - start_time
                 if total.total_seconds() > 3:
-                    f.write(start_time_str + ' - ' + end_time_str + ': total ' + str(total) + '\n')
-        s.close()
+                    output = start_time_str + ' - ' + end_time_str + ': total ' + str(total) + '\n' 
+                    print(output)
+                    f.write(output)
         on = True
-    except Exception:
+        s.close()
+    except Exception as ex:
         if on:
             on = False
             start_time = datetime.now()
